@@ -59,7 +59,6 @@ public class RecipeController {
 
         List<Integer> sourceIds = ingredients.stream().map(o -> o.getIngredientId()).collect(Collectors.toList());
 
-
         if (sourceIds.stream()
                 .filter(e -> !repositoryIngredeintsIds.contains(e))
                 .count() != 0
