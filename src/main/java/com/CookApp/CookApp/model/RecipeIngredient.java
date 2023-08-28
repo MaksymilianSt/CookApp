@@ -1,5 +1,6 @@
 package com.CookApp.CookApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class RecipeIngredient {
     @ManyToOne
     @MapsId("recipeId")
     @JoinColumn(name = "recipeId")
+    @JsonBackReference
     private Recipe recipe;
 
     private double Quantity;
