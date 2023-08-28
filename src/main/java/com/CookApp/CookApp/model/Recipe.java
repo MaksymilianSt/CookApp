@@ -1,5 +1,7 @@
 package com.CookApp.CookApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -14,22 +16,28 @@ public class Recipe {
     @NotBlank(message = "Recipe's name cannot be empty !")
     private String name;
     private String description;
+    @JsonIgnore
     private int timeNeededInMin;
+    @Transient
+    private String timeNeeded;
+
+    public String getTimeNeeded() {
+        return  Integer.divideUnsigned(timeNeededInMin,60)+ "h:" +timeNeededInMin % 60 + "min";
+    }
+
     @Enumerated(EnumType.STRING)
     private DifficultyLevel difficultyLevel;
     @Column(name = "recipe_category")
     @Enumerated(EnumType.STRING)
     private RecipeCategory category;
     @OneToMany(mappedBy = "recipe")
+    @JsonManagedReference
     List<RecipeIngredient> ingredients = new ArrayList<>();
 
     public Recipe() {
     }
 
-//    public void addIngredient(Ingredient source){
-//        RecipeIngredient recipeIngredient = new RecipeIngredient(source,this,11);
-//        ingredients.add(recipeIngredient);
-//    }
+
 
     public int getId() {
         return id;
