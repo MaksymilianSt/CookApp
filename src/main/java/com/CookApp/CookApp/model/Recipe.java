@@ -37,8 +37,6 @@ public class Recipe {
     public Recipe() {
     }
 
-
-
     public int getId() {
         return id;
     }

@@ -1,5 +1,6 @@
 package com.CookApp.CookApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -20,7 +21,8 @@ public class Ingredient {
     private double carbQuantityPer100Gram;
     @Column(name = "fat_quantity_per100gram")
     private double fatQuantityPer100Gram;
-    @OneToMany(mappedBy = "ingredient",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ingredient", fetch = FetchType.LAZY)
+    @JsonIgnore
     List<RecipeIngredient> recipes;
 
     public Ingredient() {
