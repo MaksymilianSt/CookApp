@@ -20,9 +20,6 @@ public class Recipe {
     private int timeNeededInMin;
     @Transient
     private String timeNeeded;
-
-
-
     @Enumerated(EnumType.STRING)
     private DifficultyLevel difficultyLevel;
     @Column(name = "recipe_category")
