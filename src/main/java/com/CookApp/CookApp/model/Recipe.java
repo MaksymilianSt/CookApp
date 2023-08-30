@@ -21,9 +21,7 @@ public class Recipe {
     @Transient
     private String timeNeeded;
 
-    public String getTimeNeeded() {
-        return  Integer.divideUnsigned(timeNeededInMin,60)+ "h:" +timeNeededInMin % 60 + "min";
-    }
+
 
     @Enumerated(EnumType.STRING)
     private DifficultyLevel difficultyLevel;
@@ -35,6 +33,9 @@ public class Recipe {
     List<RecipeIngredient> ingredients = new ArrayList<>();
 
     public Recipe() {
+    }
+    public String getTimeNeeded() {
+        return  Integer.divideUnsigned(timeNeededInMin,60)+ "h:" +timeNeededInMin % 60 + "min";
     }
 
     public int getId() {
